@@ -1,5 +1,12 @@
 package main
 
+import (
+	"log"
+
+	"gitlab.com/mlc-d/table/web/api"
+)
+
 func main() {
-	println("hey, mom!")
+	server := api.GetServer()
+	log.Fatalln(server.Start())
 }
