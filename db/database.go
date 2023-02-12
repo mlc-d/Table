@@ -18,11 +18,11 @@ var (
 
 func GetDB() *bun.DB {
 	singleton.Do(func() {
-		sqldb, err := sql.Open("mysql", dsn)
+		sqlDatabase, err := sql.Open("mysql", dsn)
 		if err != nil {
 			panic(err)
 		}
-		db = bun.NewDB(sqldb, mysqldialect.New())
+		db = bun.NewDB(sqlDatabase, mysqldialect.New())
 	})
 	return db
 }
