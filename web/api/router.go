@@ -14,8 +14,8 @@ var (
 )
 
 type Server struct {
-	server *echo.Echo
-	port   int
+	echoServer *echo.Echo
+	port       int
 }
 
 func GetServer() Server {
@@ -31,13 +31,18 @@ func GetServer() Server {
 		log.Panicln("PORT env variable must be a number")
 	}
 
-	return Server{
-		server: echo.New(),
-		port:   port,
+	server := Server{
+		echoServer: echo.New(),
+		port:       port,
 	}
+
+	server.echoServer.POST("/login", login)
+	server.echoServer.POST("/signup", signUp)
+
+	return server
 }
 
 // Start listens on the [Server.port]
-func (s *Server) Start() error {
-	return s.server.Start(fmt.Sprintf(":%d", s.port))
+func (s *Server) Start() {
+	s.echoServer.Logger.Fatal(s.echoServer.Start(fmt.Sprintf(":%d", s.port)))
 }
