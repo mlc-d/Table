@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/labstack/echo/v4"
-	"gitlab.com/mlc-d/table/pkg/dto"
+	"gitlab.com/mlc-d/table/dto"
 	"gitlab.com/mlc-d/table/pkg/errs"
 	"gitlab.com/mlc-d/table/web/api/responses"
 	"gitlab.com/mlc-d/table/web/api/services"

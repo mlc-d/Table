@@ -15,7 +15,7 @@ var (
 )
 
 type Repo interface {
-	Insert(ctx context.Context, user *User) (int64, error)
+	Insert(context.Context, *User) (int64, error)
 	GetPasswordByName(context.Context, *User) (*User, error)
 }
 
